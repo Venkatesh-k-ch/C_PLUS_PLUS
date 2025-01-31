@@ -1,6 +1,46 @@
 #include<cstring>
 
 #include<iostream>
+
+/*
+ *	Class:
+ *	Class is a blueprint for creating objects.
+ *	It is a collection of data members and member functions.
+ *	Data members are the variables that store the data.
+ *	Member functions are the functions that operate on the data members.
+
+ *  Object:
+ *  Object is an instance of a class.
+ *
+ * Abstraction:
+ *  Abstraction is the process of hiding the complex details and showing only the essential features of an object.
+ *  It is the process of representing the essential features without including the background details or explanations.
+ *  Ex: A car is an object. We know that it has 4 wheels, engine, etc. But we don't know the complex details of the car.
+ *  When we create a class, we make some data members private and some public. It is also kind of abstraction. 
+ *  We are hiding the complex details and showing only the essential features of the car.
+ * We have abstract class in C++ which is a class has some properties and methods which are not implemented. The classes which inherit this abstract class must implement those methods.
+ * 
+ * Encapsulation:
+ *  Encapsulation is the process of binding the data and the functions that operate on the data together.
+ *  It is the process of wrapping the data (variables) and the functions that operate on the data (methods) together as a single unit.
+ *  Ex: let us take a example of a class String. You can see that the data member str is private and we are intializing it with a constructor which is a member function.
+ *  This is called encapsulation. We are binding the data and the functions that operate on the data together.
+ * 
+ * 
+ * Polymorphism:
+ * Polymorphism is the ability of an object to take on many forms.
+ * 
+ * There are two types of polymorphism in C++:
+ * 1. Compile time polymorphism (Function overloading and operator overloading):
+ * -> This type of polymorphism is calles as compile time polymorphism because the function is resolved at compile time(which means at the time of compilation compiler will know which function to call).
+ * -> Function overloading is a process of having more than one function with the same name but different parameters.
+ * -> Operator overloading is a process of overloading the operators to perform different operations.
+ * 	For example: In class String we have defined different types of constructors, it is called function overloading.
+ * 
+ * 2. Runtime polymorphism (Virtual functions)
+ * -> This type of polymorphism is calles as runtime polymorphism because the function is resolved at runtime.
+ * -> In c++ it can be achieved by using virtual functions. I will add details about virtual functions in below code where I will use virtual functions.
+ * */
 class String{
 	char *str;
 public:
@@ -160,3 +200,20 @@ public:
 			
 };
 
+/*
+* Inheritance:
+* Inheritance is a mechanism in which a new class is created by adding new properties and methods to an existing class.
+* The new class is called derived class and the existing class is called base class.
+* The derived class inherits the properties and methods of the base class.
+* The derived class can add new properties and methods of its own.
+* The derived class can also override the properties and methods of the base class.
+* 	
+* Types of inheritance:
+* 1. Single inheritance
+* 2. Multiple inheritance
+* 3. Multi-level inheritance
+* 
+* More details about inheritance will be added whenever that context comes.
+*/
+
+//Lets discuss Inheritance in with an example.
