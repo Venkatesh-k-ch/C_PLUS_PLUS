@@ -79,7 +79,7 @@ public:
 	 * */
 	String(const char str[]){
 	    std::cout<<"Parameterized constructor called\n";
-	    this->str=new char[strlen(str)];
+	    this->str=new char[strlen(str)];// "this" is a pointer to the current object. 
 	    strcpy(this->str,str);
 	}
 
@@ -217,3 +217,87 @@ public:
 */
 
 //Lets discuss Inheritance in with an example.
+
+class parent{
+private://Name is private so it can't be accessed by the child class. Child can not have father name.
+	std::string parent_name;
+protected://Surname is protected so it can be accessed by the child class. Child can have father surname.
+	std::string surname;
+public://setter and getter functions are public so they can be accessed by the child class and outside the class.
+	parent(const std::string& name,const std::string& surname){
+		this->parent_name=name;
+		this->surname=surname;
+	}
+	void set_name(std::string name){
+		parent_name=name;
+	}
+	void set_surname(std::string name){
+		surname=name;
+	}
+	std::string& get_name(){
+		return parent_name;
+	}
+	std::string& get_surname(){
+		return surname;
+	}
+};
+
+// Single inheritance
+class child:public parent{
+private:
+	std::string child_name;
+public:
+	child(const std::string& name,const std::string& surname,const std::string& child_name):parent(name,surname),child_name(child_name){// Here we aere using initializer list to initialize the variables.
+	}	
+
+};
+
+/*
+* C++ allown multiple inheritance. In multiple inheritance, a class can inherit from more than one class.
+* Because of multiple inheritance, a class can have multiple parent classes.
+* Because of multiple inheritance, we see a ambiguity problem. To solve this problem, we use virtual inheritance.
+* Let us see an example of multiple inheritance.
+*
+*/
+
+class grandparent {
+public:
+	void display() {
+		std::cout << "Grandparent\n";
+	}
+};
+
+class parent1:public grandparent {
+};
+
+class parent2:public grandparent {
+};
+
+
+/*
+commeninting below lines, because it will give an error because of ambiguity. But is a example for error
+
+class child1 : public parent1, public parent2 {
+};
+
+*/
+
+/*
+*	As you can see child1 class is inheriting from parent1 and parent2. Both parent1 and parent2 inherited from the grandparent.
+*	When we create an object of child1 class and call display() method, it will give an error because of ambiguity.
+*	To solve this problem, we use virtual inheritance.
+*/
+
+class parent3 : public virtual grandparent {
+
+};
+class parent4 : public virtual grandparent {
+
+};
+
+class child2 : public parent3, public parent4 {};
+
+/*
+* Now when we create an object of child2 class and call display() method, it will not give an error because of virtual inheritance.
+* Basically what virtual key word does is, it will create only one copy of the grandparent for child2 instance(It merges the copy). So there will not be any ambiguity.
+*/
