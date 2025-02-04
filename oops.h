@@ -77,11 +77,14 @@ public:
 	 *  
 	 *  EX: String s("Hello"); Here we are creating a object of the class with a parameter.
 	 * */
-	String(const char str[]){
-	    std::cout<<"Parameterized constructor called\n";
-	    this->str=new char[strlen(str)];// "this" is a pointer to the current object. 
-	    strcpy(this->str,str);
-	}
+    String(const char str[]){
+     std::cout<<"Parameterized constructor called\n";
+    size_t len = strlen(str);
+     this->str=new char[len+1];// "this" is a pointer to the current object. 
+     strcpy_s(this->str, len+1, str);
+	 std::cout << str;
+	 this->str[len] = '\0';
+    }
 
 	/*
 	 *	Copy constructor:
@@ -109,8 +112,10 @@ public:
 	 * */
 	String(String& other){
 	    std::cout<<"Copy constructor called\n";
-		str=new char[strlen(other.str)];
-		strcpy(this->str,other.str);
+		int len = strlen(other.str);
+		str=new char[len+1];
+		strcpy_s(this->str, len+1, other.str);
+		this->str[len] = '\0';
 	}
 
 	/*
@@ -131,8 +136,10 @@ public:
 		if(str!=nullptr){
 			delete[] str;
 		}
-		str=new char[strlen(other.str)];
-		strcpy(this->str,other.str);
+		int len = strlen(other.str);
+		str=new char[len+1];
+		strcpy_s(this->str,len+1, other.str);
+		this->str[len] = '\0';
 		return *this;
 	}
 
@@ -177,6 +184,10 @@ public:
 		str=other.str;
 		other.str=nullptr;
 		return *this;
+	}
+
+	char* getStr() {
+		return str;
 	}
 
 	/*
